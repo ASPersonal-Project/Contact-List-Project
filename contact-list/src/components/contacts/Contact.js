@@ -10,11 +10,14 @@ const Contact = (props) => {
         }) 
 
     }
+    const onDeleteClick = () => {
+        props.deleteClickHandler()
+    }
     return (
         <div className="card card-body mb-3">
-            <h4>{name}
+            <h4>{name}{' '}
              <i onClick={onShowClick} className="fa fa-sort-down" style={{cursor:'pointer'}}/>
-             <i className="fa fa-times" style={{cursor:'pointer',float: 'right', color: 'red'}}/>
+             <i onClick={onDeleteClick} className="fa fa-times" style={{cursor:'pointer',float: 'right', color: 'red'}}/>
             </h4>
             {state.showContactinfo? (
                 <ul className="list-group">

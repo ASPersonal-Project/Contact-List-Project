@@ -15,11 +15,25 @@ const Contacts = () =>{
                     email: 'amjama@gmail.com',
                     phone: '222-333-2541'
                 }
-            ]})
+            ]});
+    const deleteContact = (id) => {
+        const {contacts} = state;
+       const newContacts = contacts.filter(contact => contact.id != id);
+
+       setState({
+           contacts : newContacts
+       });
+    }
     return(
         
         <div>
-            {state.contacts.map(contact => <Contact key={contact.id} name={contact.name} email={contact.email} phone={contact.phone}/>)}
+            {state.contacts.map(contact => <Contact 
+                key={contact.id} 
+                name={contact.name} 
+                email={contact.email} 
+                phone={contact.phone} 
+                deleteClickHandler = {deleteContact.bind(this,contact.id)}
+                />)}
         </div>
     );
 };
