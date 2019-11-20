@@ -16,7 +16,15 @@ const Test = () => {
         
     },[]);
     return(
-    <ul>{resources.map(record => <li>{record.title}</li>)}</ul>
+    <div> {resources.map(record => 
+        <div>
+            <h1>{record.title}</h1>
+            <p>{record.body}</p>
+        </div>
+        
+        
+        )}
+    </div>
     //     <div>
     //         {/* <h1>{resources}</h1> */}
     // <p>{resources.length}</p>
