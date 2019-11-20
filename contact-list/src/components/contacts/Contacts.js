@@ -18,7 +18,7 @@ const Contacts = () =>{
             ]});
     const deleteContact = (id) => {
         const {contacts} = state;
-       const newContacts = contacts.filter(contact => contact.id != id);
+       const newContacts = contacts.filter(contact => contact.id !== id);
 
        setState({
            contacts : newContacts
@@ -27,6 +27,7 @@ const Contacts = () =>{
     return(
         
         <div>
+            <h1 className="display-4 mb-2"><span className="text-denager">Contact </span>List</h1>
             {state.contacts.map(contact => <Contact 
                 key={contact.id} 
                 name={contact.name} 
