@@ -11,7 +11,7 @@ const Contact = (props) => {
 
     }
     const onDeleteClick = () => {
-        props.deleteClickHandler()
+        // props.deleteClickHandler()
     }
     return (
         <div className="card card-body mb-3">

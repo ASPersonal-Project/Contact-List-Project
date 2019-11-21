@@ -1,43 +1,68 @@
 import React,{useState,useEffect} from 'react';
 import Contact from './Contact';
+import {fetchData} from '../action';
+import {connect} from 'react-redux';
+
 import axios from 'axios';
 
-const Contacts = () =>{
-    const [state,setState] = useState({contacts : []});
-    const deleteContact = (id) => {
-        const {contacts} = state;
-       const newContacts = contacts.filter(contact => contact.id !== id);
+// const reducer = (state,action) =>{
+//     switch (action.type) {
+//         case 'DELETE_CONTACT':
+//             return {
+//                 ...state, contacts:state.contacts.filter(contact => contact.id !== action.payload)
+//             }
+    
+//         default:
+//            return state;
+//     }
+// }
 
-       setState({
-           contacts : newContacts
-       });
-    }
 
-    const fetchResource = async(resource) => {
-        const response = await axios.get(`http://jsonplaceholder.typicode.com/${resource}`);
+const Contacts = (contactList) =>{
+    // const [state,setState] = useState({contacts : []});
+    // const deleteContact = (id) => {
+    //     const {contacts} = state;
+    //    const newContacts = contacts.filter(contact => contact.id !== id);
+
+    //    setState({
+    //        contacts : newContacts
+    //    });
+    // }
+
+    // const fetchResource = async(resource) => {
+    //     const response = await axios.get(`http://jsonplaceholder.typicode.com/${resource}`);
         
-        setState({contacts:response.data});
+    //     setState({contacts:response.data});
        
-    };
+    // };
 
     useEffect( () =>{
-        fetchResource('users');
+        fetchData();
         
     },[]);
     return(
         
         <div>
             <h1 className="display-4 mb-2"><span className="text-denager">Contact </span>List</h1>
-            {state.contacts.map(contact => <Contact 
+            {contactList.contacts.map(contact => <Contact 
                 key={contact.id} 
                 name={contact.name} 
                 email={contact.email} 
                 phone={contact.phone} 
-                deleteClickHandler = {deleteContact.bind(this,contact.id)}
+                // deleteClickHandler = {deleteContact.bind(this,contact.id)}
                 />)}
         </div>
     );
 };
+
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        contactList: Object.values(state.contacts)
+    };
+};
+
+export default connect(mapStateToProps,{fetchData})(Contacts);
 
 // class Contacts extends React.Component{
 //     state = {contacts: [
@@ -73,5 +98,3 @@ const Contacts = () =>{
 //         </div>
 //     );
 // };
-
-export default Contacts;
