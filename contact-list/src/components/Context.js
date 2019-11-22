@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
 
-const reducer = (state,action) =>{
-    switch(action.type){
-        case 'DELETE_CONTACT';
-            return {
-                
-            }
-    }
-      
-}
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "DELETE_CONTACT":
+      return {};
+  }
+};

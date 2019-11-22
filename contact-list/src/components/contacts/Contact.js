@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 const Contact = (props) => {
     const [state,setState] = useState({showContactinfo : true});
     const {name,email,phone} = props;
-
+    console.log(props)
     const onShowClick = (e)=>{
         setState({
             showContactinfo:!state.showContactinfo
