@@ -31,7 +31,7 @@ const Contacts = ({ contactList, fetchData }) => {
 };
 
 const mapStateToProps = (state) => {
-  
+  // console.log(state.contacts)
   return {
     contactList: state.contacts
   };

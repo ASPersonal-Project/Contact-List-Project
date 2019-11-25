@@ -22,7 +22,7 @@ const Contact = (props) => {
             <h4>{name}{' '}
              <i onClick={onShowClick} className="fa fa-sort-down" style={{cursor:'pointer'}}/>
              <i onClick={() => props.deleteData(id)} className="fa fa-times" style={{cursor:'pointer',float: 'right', color: 'red'}}/>
-             <Link to={`contact/edit`}><i className="fa fa-edit" style={{cursor:'pointer',float: 'right', color: 'black',marginRight:'1rem'}}/></Link>
+             <Link to={`contact/edit/${id}`}><i className="fa fa-edit" style={{cursor:'pointer',float: 'right', color: 'black',marginRight:'1rem'}}/></Link>
             </h4>
             {state.showContactinfo? (
                 <ul className="list-group">

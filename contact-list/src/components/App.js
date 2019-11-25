@@ -21,7 +21,7 @@ const App = () =>{
                 <Switch>
                     <Route exact path="/" component={Contacts}/>
                     <Route exact path="/contact/add" component={AddContact1}/>
-                    <Route exact path="/contact/edit" component={EditContact}/>
+                    <Route exact path="/contact/edit/:id" component={EditContact}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/test" component={Test}/>
                 </Switch>

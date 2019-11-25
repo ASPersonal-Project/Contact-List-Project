@@ -1,28 +1,40 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {connect} from 'react-redux'
-import {addData} from '../action';
+import { editData,getData} from '../action';
+import {useParams} from 'react-router-dom';
 import uuid from 'uuid';
 
 import TextInputGroup from '../layout/TextInputGroup';
 
 
-const AddContact = ({addData}) => {
+const EditContact = ({editData,getData}) => {
+
+    
+    // console.log(match.params);
     const [state,setState] = useState( {name:'',email:'',phone:''});
     
     const {name,email,phone} = state;
 
+    const {id} = useParams();
+
+
+    // console.log(id);
     const onChange = e => setState({
         ...state,
         [e.target.name]:e.target.value});
     
    const onSubmit = (e) => {
-       if(name !== '' && email !== '' && phone !== ''){
-           addData(state);
-           console.log(state);
-       }else {
-        //    setState({error:{name:"anjana"}})
-           alert("All fields required");
-       }
+    //    console.log(id,state);
+
+        editData(id,state);
+
+    //    if(name !== '' && email !== '' && phone !== ''){
+    //        addData(state);
+    //        console.log(state);
+    //    }else {
+    //     //    setState({error:{name:"anjana"}})
+    //        alert("All fields required");
+    //    }
     
         
    
@@ -66,7 +78,13 @@ const AddContact = ({addData}) => {
         </div>
     )
 }
+ const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps.match.params.id)
+    console.log(state.contacts[ownProps.match.params.id]);
+    return {
+        contactData : state.contacts[ownProps.match.params.id]
+    }
+}
 
 
-
-export default connect(null, {addData})(AddContact);
+export default connect(mapStateToProps, {editData,getData})(EditContact);

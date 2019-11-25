@@ -4,16 +4,18 @@ export default ( state ={},action) => {
     switch (action.type) {
         
         case 'Add_DATA':
-                const newConta = action.payload
-                // console.log(typeof action.payload);
-            return { ...state,newConta}
+            const newConta = action.payload
+                return { ...state,newConta}
         case 'FETCH_DATA':
-            return action.payload;
+                return action.payload;
         case 'DELETE_CONTACT':
-            
             const newData = Array.from(state).filter(conatct=> conatct.id !== action.payload);
-            return newData;
-            
+                return newData;
+        case 'GET_DATA':
+                return action.payload;
+        case 'EDIT_DATA':
+                // const newdata = action.payload;
+            return {...state,[action.payload.id]:action.payload}
            
             // return _.omit(state,action.payload);
         default:
