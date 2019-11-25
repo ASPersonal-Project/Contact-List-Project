@@ -21,11 +21,11 @@ export const addData = (value) => async dispatch =>{
 
 export const getData = (id) => async dispatch => {
   const response = await axios.get(`http://localhost:3001/contacts/${id}`);
+  // console.log(response.data)
   dispatch({type:GET_DATA,payload:response.data})
 }
 
 export const editData = (id,value) => async dispatch =>{
   const response = await axios.patch(`http://localhost:3001/contacts/${id}`,value);
-  console.log(response.data);
   dispatch({type:EDIT_DATA,payload:response.data})
 }

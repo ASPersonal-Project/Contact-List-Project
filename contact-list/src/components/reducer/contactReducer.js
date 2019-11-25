@@ -12,7 +12,7 @@ export default ( state ={},action) => {
             const newData = Array.from(state).filter(conatct=> conatct.id !== action.payload);
                 return newData;
         case 'GET_DATA':
-                return action.payload;
+                return {...state,[action.payload.id]:action.payload}
         case 'EDIT_DATA':
                 // const newdata = action.payload;
             return {...state,[action.payload.id]:action.payload}

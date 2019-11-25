@@ -7,7 +7,7 @@ import uuid from 'uuid';
 import TextInputGroup from '../layout/TextInputGroup';
 
 
-const EditContact = ({editData,getData}) => {
+const EditContact = ({editData,getData,contactData}) => {
 
     
     // console.log(match.params);
@@ -17,8 +17,13 @@ const EditContact = ({editData,getData}) => {
 
     const {id} = useParams();
 
+ useEffect(() => {
+    getData(id);
+    
+}, [])
+    
 
-    // console.log(id);
+    // console.log(contactData)
     const onChange = e => setState({
         ...state,
         [e.target.name]:e.target.value});
@@ -40,13 +45,14 @@ const EditContact = ({editData,getData}) => {
    
         
     }
+    
 
     
     
     return(
         
         <div className="card mb-3">
-            <div className="card-header">Add Contact</div>
+            <div className="card-header">Edit Contact</div>
                 <div className="card-body">
                     <TextInputGroup
                         label ="Name"
@@ -77,9 +83,10 @@ const EditContact = ({editData,getData}) => {
                 </div>
         </div>
     )
+    
 }
  const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps.match.params.id)
+    // console.log(state.contacts[ownProps.match.params.id])
     console.log(state.contacts[ownProps.match.params.id]);
     return {
         contactData : state.contacts[ownProps.match.params.id]
