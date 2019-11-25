@@ -8,7 +8,8 @@ const Contacts = ({ contactList, fetchData }) => {
     fetchData();
   }, []);
 
-  console.log(contactList);
+  // console.log(contactList);
+  
 
   return (
     <div>
@@ -22,14 +23,15 @@ const Contacts = ({ contactList, fetchData }) => {
             name={contact.name}
             email={contact.email}
             phone={contact.phone}
-            // deleteClickHandler = {deleteContact.bind(this,contact.id)}
+            id={contact.id}
           />
         ))}
     </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+  
   return {
     contactList: state.contacts
   };

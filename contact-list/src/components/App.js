@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+import { Router,Route,Switch} from 'react-router-dom'
 import Contacts from '../components/contacts/Contacts';
 import Header from './Header';
 import AddContact1 from '../components/contacts/AddContact1';
@@ -7,13 +7,14 @@ import About from '../components/layout/About';
 import Test from '../components/test/Test';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import history from '../history';
 
 
 
 const App = () =>{
     return(
         <div>
-            <Router>
+            <Router history={history}>
             <Header branding="Contact Manager"/>
             <div className="container">
                 <Switch>

@@ -1,18 +1,29 @@
 import React,{useState} from 'react';
+import {connect} from 'react-redux'
+import {addData} from '../action';
+import uuid from 'uuid';
 
 import TextInputGroup from '../layout/TextInputGroup';
 
-const AddContact = () => {
-    const [state,setState] = useState( {name:'',email:'',phone:'', errors: {}});
-    const {name,email,phone,errors} = state;
+const AddContact = ({addData}) => {
+    const [state,setState] = useState( {name:'',email:'',phone:''});
+    const {name,email,phone} = state;
 
     const onChange = e => setState({
         ...state,
         [e.target.name]:e.target.value});
     
-   const onSubmit = e => {
-        e.preventDefault();
-        console.log(state);
+   const onSubmit = (e) => {
+    e.preventDefault();
+    const newContact = {...state,id : uuid()}
+    // console.log(newContact);
+    addData(newContact);
+   
+     
+         
+        // console.log(state);
+       
+        
     }
 
     // if(name === ''){
@@ -41,7 +52,7 @@ const AddContact = () => {
                         placeholder="Enter Name"
                         value={name}
                         onChange={onChange}
-                        error = {errors.name}
+                        // error = {errors.name}
                     />
                    <TextInputGroup
                         label ="Email"
@@ -50,7 +61,7 @@ const AddContact = () => {
                         placeholder="Enter Email"
                         value={email}
                         onChange={onChange}
-                        error = {errors.email}
+                        // error = {errors.email}
                     />
                     <TextInputGroup
                         label ="Phone"
@@ -58,7 +69,7 @@ const AddContact = () => {
                         placeholder="Enter Phone"
                         value={phone}
                         onChange={onChange}
-                        error = {errors.phone}
+                        // error = {errors.phone}
                     />
                     <button type="submit" className="btn btn-primary btn-block">Add Contact</button>
                     </form>
@@ -69,4 +80,4 @@ const AddContact = () => {
 
 
 
-export default AddContact;
+export default connect(null, {addData})(AddContact);

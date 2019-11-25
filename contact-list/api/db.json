@@ -1,3 +1,16 @@
 {
-    "contacts":[]
+  "contacts": [
+    {
+      "name": "anjana",
+      "email": "anajan@Q",
+      "phone": "213654",
+      "id": 3
+    },
+    {
+      "name": "Kasun",
+      "email": "kasun@gmaill.com",
+      "phone": "25418754652",
+      "id": "f930a456-a6f7-467f-ad25-0b1d0b12670f"
+    }
+  ]
 }
