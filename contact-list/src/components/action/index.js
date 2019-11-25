@@ -4,7 +4,7 @@ import history from '../../history';
 
 export const fetchData = () => async dispatch => {
   const response = await axios.get("http://localhost:3001/contacts");
-  console.log(response.data);
+  // console.log(response.data);
   dispatch({ type: FETCH_DATA, payload: response.data });
 };
 
@@ -16,11 +16,11 @@ export const deleteData = (id) => async dispatch => {
 }
 
 export const addData = (value) => async dispatch =>{
-  console.log(value);
+  // console.log(value);
   const response = await axios.post('http://localhost:3001/contacts', value)
-console.log(response.data);
+// console.log(response.data);
   dispatch({type:ADD_CONTACT,payload:response.data});
-   history.push('/');
+  //  history.push('/');
 }
 
 // export const deleteData = () =>{

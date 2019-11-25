@@ -5,6 +5,7 @@ import Header from './Header';
 import AddContact1 from '../components/contacts/AddContact1';
 import About from '../components/layout/About';
 import Test from '../components/test/Test';
+import EditContact from '../components/contacts/EditContact';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import history from '../history';
@@ -20,6 +21,7 @@ const App = () =>{
                 <Switch>
                     <Route exact path="/" component={Contacts}/>
                     <Route exact path="/contact/add" component={AddContact1}/>
+                    <Route exact path="/contact/edit" component={EditContact}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/test" component={Test}/>
                 </Switch>

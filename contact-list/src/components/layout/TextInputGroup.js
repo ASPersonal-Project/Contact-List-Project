@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 // import PropType from 'props-types';
 // import classnames from 'classnames';
 
@@ -16,12 +17,13 @@ const TextInputGroup = ({
             <label >{label}</label>
             <input 
             type={type} 
-            className="form-control"
+            className='form-control '
             
             placeholder={placeholder} 
             name={name}
             value={value}
             onChange={onChange}/>
+            {/* {error && <div className="invalid-feedback">{error}</div> } */}
             
                         
         </div>
