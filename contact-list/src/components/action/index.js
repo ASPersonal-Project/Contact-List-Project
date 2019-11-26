@@ -26,6 +26,8 @@ export const getData = (id) => async dispatch => {
 }
 
 export const editData = (id,value) => async dispatch =>{
+  // console.log(id)
   const response = await axios.patch(`http://localhost:3001/contacts/${id}`,value);
+  console.log(response.data);
   dispatch({type:EDIT_DATA,payload:response.data})
 }
